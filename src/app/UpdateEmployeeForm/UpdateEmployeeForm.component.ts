@@ -4,11 +4,14 @@ import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpService } from '../Services/HttpService';
 
-import {PhoneNumerEG_Validation} from '../phone-numer-eg.directive';
+import { PhoneNumerEG_Validation } from '../phone-numer-eg.directive';
+import { onlyLettersValidation } from '../only-letters.directive';
+import { PositiveValidation } from '../positive.directive';
 
 @Component({
   selector: 'UpdateEmployeeForm',
   templateUrl: './UpdateEmployeeForm.component.html',
+  styleUrls: ['./UpdateEmployeeForm.component.css']
 })
 export class UpdateEmployeeForm {
 
@@ -23,10 +26,10 @@ export class UpdateEmployeeForm {
     this.msgHidden = true;
     this.Employee = this.router.getCurrentNavigation().extras;
     this.updateEmployeeForm = new FormGroup({
-      ID: new FormControl(this.Employee.id, Validators.required),
-      Name: new FormControl(this.Employee.name, Validators.required),
+      ID: new FormControl(this.Employee.id, [Validators.required, PositiveValidation]),
+      Name: new FormControl(this.Employee.name, [Validators.required, onlyLettersValidation]),
       Phone: new FormControl(this.Employee.phone, PhoneNumerEG_Validation),
-      BasicSalary: new FormControl(this.Employee.basicSalary, Validators.min(1))
+      BasicSalary: new FormControl(this.Employee.basicSalary, PositiveValidation)
     });
   }
 
