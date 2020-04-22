@@ -1,0 +1,31 @@
+<form #InsertEmployeeForm="ngForm" novalidate (ngSubmit)="onSubmit(InsertEmployeeForm)">
+    <div class="form-group form-inline">
+        <label class="control-label" for="Name">Name: </label>
+        <input class="form-control" id="Name" name="Name" type="text" required appOnlyLetters [(ngModel)]="model.Name" />
+        <div [hidden]="InsertEmployeeForm.form.controls.Name?.valid || InsertEmployeeForm.form.controls.Name?.untouched" class="alert alert-danger">
+            Name is required
+        </div>
+    </div>
+    <div class="form-group form-inline">
+        <label for="Phone">Phone:</label>
+        <input class="form-control" id="Phone" name="Phone" type="text" required appPhoneNumerEG [(ngModel)]="model.Phone" />
+        <div [hidden]="InsertEmployeeForm.form.controls.Phone?.valid || InsertEmployeeForm.form.controls.Phone?.untouched" class="alert alert-danger">
+            Phone is required
+        </div>
+    </div>
+    <div class="form-group form-inline">
+        <label for="DateOfBirth">Date Of Birth: </label>
+        <input class="form-control" id="DateOfBirth" name="DateOfBirth" type="text" [(ngModel)]="model.Date" />
+    </div>
+    <div class="form-group form-inline">
+        <label for="BasicSalary">Basic Salary: </label>
+        <input class="form-control" id="BasicSalary" name="BasicSalary" type="number" [(ngModel)]="model.BasicSalary" />
+    </div>
+    <div class="form-group form-inline">
+        <input id="btnInsert" class="form-control" type="submit" value="Insert" [disabled]="(!InsertEmployeeForm.form.valid)">
+    </div>
+</form>
+
+<div [hidden]="responseMeassageHidden">
+    <h6>Data inserted</h6>
+</div>

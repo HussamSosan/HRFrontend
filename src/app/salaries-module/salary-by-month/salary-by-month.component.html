@@ -1,0 +1,23 @@
+<div>
+  <h2>Salaries By Month</h2>
+</div>
+<div>
+  <label for="monthid">Enter Month ID:</label>
+  <input class="form-control" type="number" [(ngModel)]="monthID">
+</div>
+<div>
+  <label for="option">Select An option:</label>
+  <select class="form-control" name="option" id="option" [(ngModel)]="selectedOption">
+    <option value="All">All Data</option>
+    <option value="statistics">All Statistics</option>
+    <option value="tax">tax</option>
+    <option value="net">net</option>
+    <option value="total">total</option>
+  </select>
+</div>
+<div>
+  <button [disabled]="selectedOption ===undefined || monthID === undefined || monthID<1" class="btn btn-primary" (click)="showResult()">Show result</button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

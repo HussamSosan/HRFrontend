@@ -1,0 +1,44 @@
+<div *ngIf="option ==='All'">
+  <h2>Salaries</h2>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Gross Salary</th>
+        <th>Net Salary</th>
+        <th>Tax</th>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Employee Phone</th>
+        <th>Date Of Birth</th>
+        <th>Basic Salary</th>
+      </tr>
+
+      <tr *ngFor="let Salary of response">
+        <td>{{Salary.id}}</td>
+        <td>{{Salary.grossSalary}}</td>
+        <td>{{Salary.netSalary}}</td>
+        <td>{{Salary.tax}}</td>
+        <td>{{Salary.emp.id}}</td>
+        <td>{{Salary.emp.name}}</td>
+        <td>{{Salary.emp.phone}}</td>
+        <td>{{Salary.emp.dateOfBirth}}</td>
+        <td>{{Salary.emp.basicSalary}}</td>
+      </tr>
+
+
+    </table>
+</div>
+<div *ngIf="option==='statistics'">
+  <h2> Tax: {{response.tax}} </h2>
+  <h2> Net Salary: {{response.netSalary}} </h2>
+  <h2> Gross Salary: {{response.grossSalary}} </h2>
+</div>
+<div *ngIf="option==='tax'">
+  <h2> Tax: {{response.tax}} </h2>
+</div>
+<div *ngIf="option==='net'">
+  <h2> Net Salary: {{response.netSalary}} </h2>
+</div>
+<div *ngIf="option==='total'">
+  <h2> Gross Salary: {{response.grossSalary}} </h2>
+</div>

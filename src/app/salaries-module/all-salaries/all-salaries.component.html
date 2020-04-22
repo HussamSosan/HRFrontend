@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Salaries</h2>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Month ID</th>
+        <th>Gross Salary</th>
+        <th>Net Salary</th>
+        <th>Tax</th>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Employee Phone</th>
+        <th>Date Of Birth</th>
+        <th>Basic Salary</th>
+      </tr>
+
+      <tr *ngFor="let Salary of Salaries">
+        <td>{{Salary.id}}</td>
+        <td>{{Salary.monthID}}</td>
+        <td>{{Salary.grossSalary}}</td>
+        <td>{{Salary.netSalary}}</td>
+        <td>{{Salary.tax}}</td>
+        <td>{{Salary.emp.id}}</td>
+        <td>{{Salary.emp.name}}</td>
+        <td>{{Salary.emp.phone}}</td>
+        <td>{{Salary.emp.dateOfBirth}}</td>
+        <td>{{Salary.emp.basicSalary}}</td>
+      </tr>
+
+
+    </table>
+
+  </div>

@@ -1,0 +1,34 @@
+<div>
+  <label>Filter by name</label>
+  <input type="text" [(ngModel)]="filterInput" />
+</div>
+<table class="table">
+  <tr [hidden]="!notHidden">
+    <th>ID</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Age</th>
+    <th>basicSalary</th>
+    <th>URL</th>
+    <th>Info</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let Employee of filter()">
+    <td>{{Employee.id}}</td>
+    <td>{{Employee.name | shortify}}</td>
+    <td>{{Employee.phone | stars}}</td>
+    <td>{{Employee.age}}</td>
+    <td>{{Employee.basicSalary}}</td>
+    <td><a href={{Employee.url}}>{{Employee.url}}</a></td>
+    <td><a routerLink='/employeeinformations' [queryParams]='{id: Employee.id }'>info</a></td>
+    <td><button id="btnUpdate" class="button" (click)="gotoDynamic(Employee)">Update</button></td>
+    <td><button id="btnDelete" class="button" (click)="deleteEmployee(Employee.id,Employee.name)">Delete</button></td>
+  </tr>
+
+
+</table>
+<div id="popup" [hidden]="popupHidden">
+  <h5 id="popUpMessage">{{deletedName}} Deleted</h5>
+  <button (click)="popupOk()">Ok</button>
+</div>
