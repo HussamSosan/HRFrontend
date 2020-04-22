@@ -27,8 +27,6 @@ export function validation(control: AbstractControl): { [key: string]: any } {
   if (control.value > 0) {
     return null;
   } else {
-    return {
-      error: 'Negative'
-    };
+    return { 'appPositive': true };;
   }
 }

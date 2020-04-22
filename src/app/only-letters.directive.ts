@@ -23,11 +23,9 @@ export class OnlyLettersDirective implements Validator {
 
 export function onlyLettersValidation(control: AbstractControl): { [key: string]: any } {
   let letters = /^[A-Za-z" "]+$/;
-  if (control.value.match(letters)) {
+  if (control.value?.match(letters)) {
     return null;
   } else {
-    return {
-      error: 'Not only Letters'
-    };
+    return { 'appOnlyLetters': true };
   }
 }

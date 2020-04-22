@@ -1,17 +1,19 @@
 <form #InsertEmployeeForm="ngForm" novalidate (ngSubmit)="onSubmit(InsertEmployeeForm)">
     <div class="form-group form-inline">
         <label class="control-label" for="Name">Name: </label>
-        <input class="form-control" id="Name" name="Name" type="text" required appOnlyLetters [(ngModel)]="model.Name" />
-        <div [hidden]="InsertEmployeeForm.form.controls.Name?.valid || InsertEmployeeForm.form.controls.Name?.untouched" class="alert alert-danger">
-            Name is required
-        </div>
+        <input class="form-control" id="Name" name="Name" type="text" required appOnlyLetters [(ngModel)]="model.Name" #Name="ngModel" />
+    </div>
+    <div [hidden]="Name?.valid || Name?.untouched" class="alert alert-danger">
+      <p [hidden]="!Name?.errors?.required">Name is required</p>
+      <p [hidden]="!Name?.errors?.appOnlyLetters">Name must contain only letters and spaces</p>
     </div>
     <div class="form-group form-inline">
         <label for="Phone">Phone:</label>
-        <input class="form-control" id="Phone" name="Phone" type="text" required appPhoneNumerEG [(ngModel)]="model.Phone" />
-        <div [hidden]="InsertEmployeeForm.form.controls.Phone?.valid || InsertEmployeeForm.form.controls.Phone?.untouched" class="alert alert-danger">
-            Phone is required
-        </div>
+        <input class="form-control" id="Phone" name="Phone" type="text" required appPhoneNumerEG [(ngModel)]="model.Phone" #Phone="ngModel" />
+    </div>
+    <div [hidden]="Phone?.valid || Phone?.untouched" class="alert alert-danger">
+      <p [hidden]="!Phone?.errors?.required" >Phone is required</p>
+      <p [hidden]="!Phone?.errors?.appPhoneNumerEG" >Phone must be valid egyptian phone number </p>
     </div>
     <div class="form-group form-inline">
         <label for="DateOfBirth">Date Of Birth: </label>
@@ -19,10 +21,14 @@
     </div>
     <div class="form-group form-inline">
         <label for="BasicSalary">Basic Salary: </label>
-        <input class="form-control" id="BasicSalary" name="BasicSalary" type="number" [(ngModel)]="model.BasicSalary" />
+        <input class="form-control" id="BasicSalary" name="BasicSalary" type="number" required appPositive [(ngModel)]="model.BasicSalary" #BasicSalary="ngModel" />
+    </div>
+    <div [hidden]="BasicSalary?.valid || BasicSalary?.untouched" class="alert alert-danger">
+      <p [hidden]="!BasicSalary?.errors?.required" >Basic Salary is required</p>
+      <p [hidden]="!BasicSalary?.errors?.appPositive" >Basic Salary must be greater than zero </p>
     </div>
     <div class="form-group form-inline">
-        <input id="btnInsert" class="form-control" type="submit" value="Insert" [disabled]="(!InsertEmployeeForm.form.valid)">
+        <input id="btnInsert" class="form-control" type="submit" value="Insert" [disabled]="InsertEmployeeForm.invalid">
     </div>
 </form>
 

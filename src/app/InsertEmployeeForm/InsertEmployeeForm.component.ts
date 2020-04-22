@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from './Employee';
-import {NgForm} from '@angular/forms';
+import { NgForm, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'InsertEmployeeForm',
   templateUrl: './InsertEmployeeForm.component.html',
+  styleUrls: ['./InsertEmployeeForm.component.css']
 })
 export class InsertEmployeeForm {
 

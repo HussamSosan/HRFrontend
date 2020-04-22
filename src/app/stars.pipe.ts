@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StarsPipe implements PipeTransform {
 
   transform(value: string): string {
-    return value.slice(0, 8) + '***';
+    return value?.slice(0, 8) + '***';
   }
 
 }
